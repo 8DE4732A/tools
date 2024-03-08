@@ -6,7 +6,8 @@ import { LoaderConfOptions } from 'kkt';
 import pkg from './package.json';
 
 export default (conf: Configuration, env: 'development' | 'production', options: LoaderConfOptions) => {
-  let LOADPATH = env === 'production' ? '/tools' : '';
+  // let LOADPATH = env === 'production' ? '/tools' : '';
+  let LOADPATH = '';
   if (process.env.DOCKER === 'true') {
     LOADPATH = '';
   }

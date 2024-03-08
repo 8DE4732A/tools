@@ -73,20 +73,20 @@ jobs:
     #   tag: ${{ steps.changelog.outputs.tag }}
     #   successful: ${{steps.create_tag.outputs.successful }}
     #   gh-pages-short-hash: ${{ steps.changelog.outputs.gh-pages-short-hash }}
-  roll_back:
-    if: failure()
-    needs: [build, create_release]
-    runs-on: ubuntu-latest
-    timeout-minutes: 4
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
+  # roll_back:
+  #   if: failure()
+  #   needs: [build, create_release]
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 4
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         ref: ${{ github.head_ref }}
 
-      - uses: dev-drprasad/delete-tag-and-release@v1.0
-        if: needs.build.outputs.successful
-        with:
-          delete_release: true
-          repo: jaywcjlove/tools
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: '${{ needs.build.outputs.create_tag_version }}'
+  #     - uses: dev-drprasad/delete-tag-and-release@v1.0
+  #       if: needs.build.outputs.successful
+  #       with:
+  #         delete_release: true
+  #         repo: jaywcjlove/tools
+  #         github_token: ${{ secrets.GITHUB_TOKEN }}
+  #         tag_name: '${{ needs.build.outputs.create_tag_version }}'

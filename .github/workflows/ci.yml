@@ -73,7 +73,6 @@ jobs:
     #   tag: ${{ steps.changelog.outputs.tag }}
     #   successful: ${{steps.create_tag.outputs.successful }}
     #   gh-pages-short-hash: ${{ steps.changelog.outputs.gh-pages-short-hash }}
-
   roll_back:
     if: failure()
     needs: [build, create_release]
